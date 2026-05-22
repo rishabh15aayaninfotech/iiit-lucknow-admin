@@ -10,10 +10,11 @@ import {
   FiTrendingUp,
   FiUsers,
 } from 'react-icons/fi'
+import { FaRupeeSign } from 'react-icons/fa'
 
 const summaryCards = [
   { title: 'Total Affiliates', value: '1,240', delta: '14.4%', tone: 'green', progress: 30, icon: FiUsers },
-  { title: 'Total Commissions', value: '$45,000', delta: '20%', tone: 'violet', progress: 59, icon: FiDollarSign },
+  { title: 'Total Commissions', value: '$45,000', delta: '20%', tone: 'violet', progress: 59, icon: FaRupeeSign },
   { title: 'Conversion Rate', value: '3.8%', delta: '85%', tone: 'amber', progress: 10, icon: FiTrendingUp },
   { title: 'Marketing ROI', value: '410%', delta: '5%', tone: 'red', progress: 65, icon: FiTrendingDown },
 ]
@@ -143,7 +144,7 @@ function AffiliateProgramPage() {
                 <div key={item.title} className="affiliate-payout-row">
                   <div className="affiliate-payout-left">
                     <span className="affiliate-payout-icon">
-                      <FiDollarSign />
+                      <FaRupeeSign />
                     </span>
                     <div>
                       <strong>{item.title}</strong>

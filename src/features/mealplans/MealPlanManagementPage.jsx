@@ -14,6 +14,7 @@ import {
 } from 'react-icons/fi'
 import { useToast } from '../../components/feedback/ToastProvider'
 import { mealPlans } from '../../data/messMockData'
+import { FaRupeeSign } from 'react-icons/fa'
 
 function MealPlanManagementPage() {
   const toast = useToast()
@@ -231,7 +232,7 @@ function MealPlanManagementPage() {
                   <td>
                     <div className="order-product-cell">
                       <div className="product-thumb square">
-                        <FiDollarSign />
+                        <FaRupeeSign />
                       </div>
                       <span>
                         <strong>{plan.name}</strong>

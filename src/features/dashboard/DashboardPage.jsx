@@ -22,6 +22,8 @@ import {
   weeklySchedule,
 } from '../../data/messMockData'
 
+import { FaRupeeSign } from 'react-icons/fa'
+
 function DashboardPage() {
   const [selectedPeriod, setSelectedPeriod] = useState('daily')
 
@@ -50,7 +52,7 @@ function DashboardPage() {
       case 'trending-down':
         return <FiTrendingDown size={24} />
       case 'dollar-sign':
-        return <FiDollarSign size={24} />
+        return <FaRupeeSign size={24} />
       default:
         return <FiBarChart2 size={24} />
     }
@@ -234,7 +236,7 @@ function DashboardPage() {
             <div className="revenue-details">
               <div className="revenue-summary">
                 <div className="revenue-card">
-                  <FiDollarSign />
+                  <FaRupeeSign />
                   <div>
                     <strong>Rs. {revenueReports.daily.total.toLocaleString()}</strong>
                     <span>Total Today</span>
