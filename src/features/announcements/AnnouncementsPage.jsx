@@ -26,7 +26,7 @@ const initialAnnouncements = [
   {
     id: 'ANN001',
     title: 'Special Dinner on Republic Day',
-    message: 'Enjoy a special menu on 26th January featuring traditional Indian dishes including Paneer Butter Masala, Gulab Jamun, and special sweets.',
+    message: 'Special menu on 26th January including Paneer Butter Masala, Gulab Jamun, and special sweets.',
     date: '2024-01-26',
     time: '07:30 PM',
     audience: 'All Students & Staff',
