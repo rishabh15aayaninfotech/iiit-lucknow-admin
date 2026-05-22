@@ -106,10 +106,14 @@ function Sidebar({ isOpen, onClose, currentPath, isCollapsed, onToggleCollapse }
       <div className={`sidebar-overlay ${isOpen ? 'show' : ''}`} onClick={onClose} />
       <aside className={`admin-sidebar ${isOpen ? 'open' : ''} ${isCollapsed ? 'collapsed' : ''}`}>
         <div className="sidebar-brand-wrap">
-          <div>
-            <img src={logo} alt="IIIT Lucknow Logo" className="sidebar-logo" width="100" className="img-fluid mx-auto" />
-            {/* <h1 className="sidebar-brand">IIIT Lucknow</h1>
-            <p className="sidebar-subtitle">Mess Management</p> */}
+          <div className="sidebar-logo-container">
+            <img src={logo} alt="IIIT Lucknow Logo" className="sidebar-logo" />
+            {!isCollapsed && (
+              <div className="sidebar-brand-text">
+                <h1 className="sidebar-brand">IIIT Lucknow</h1>
+                <p className="sidebar-subtitle">Mess Management System</p>
+              </div>
+            )}
           </div>
           <div className="d-flex align-items-center gap-2">
             <button
@@ -182,7 +186,6 @@ function Sidebar({ isOpen, onClose, currentPath, isCollapsed, onToggleCollapse }
             <div className="sidebar-user-copy">
               <h6>{currentUser?.name || 'Mess Admin'}</h6>
               <p>{currentUser?.email || 'admin@iiitl.ac.in'}</p>
-              
             </div>
             <button
               type="button"

@@ -67,7 +67,7 @@ function Topbar({ onMenuClick, theme, onToggleTheme }) {
             aria-expanded={profileOpen}
             aria-label="Open profile menu"
           >
-            <span className="avatar">A</span>
+            <span className="avatar">MA</span>
             <FiChevronDown className="profile-trigger-icon" />
           </button>
 

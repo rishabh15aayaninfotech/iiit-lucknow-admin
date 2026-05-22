@@ -6882,3 +6882,364 @@ a {
     font-size: 0.8rem;
   }
 }
+
+/* Sidebar Logo Styles */
+.sidebar-brand-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 20px 10px;
+}
+
+.sidebar-logo-container {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: 1;
+}
+
+.sidebar-logo {
+  width: 42px;
+  height: 42px;
+  object-fit: contain;
+  border-radius: 10px;
+  flex-shrink: 0;
+}
+
+.sidebar-brand-text {
+  flex: 1;
+}
+
+.sidebar-brand {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.2;
+  font-weight: 700;
+  color: var(--admin-text-strong);
+}
+
+.sidebar-subtitle {
+  margin: 2px 0 0;
+  font-size: 10px;
+  opacity: 0.7;
+  color: var(--admin-text-soft);
+}
+
+/* Collapsed Sidebar Logo */
+.sidebar-collapsed .sidebar-logo-container {
+  justify-content: center;
+}
+
+.sidebar-collapsed .sidebar-logo {
+  width: 36px;
+  height: 36px;
+}
+
+.sidebar-collapsed .sidebar-brand-text {
+  display: none;
+}
+
+.sidebar-collapsed .sidebar-brand-wrap {
+  padding: 16px 12px;
+  justify-content: center;
+}
+
+/* Responsive */
+@media (max-width: 991px) {
+  .sidebar-logo {
+    width: 38px;
+    height: 38px;
+  }
+  
+  .sidebar-brand {
+    font-size: 14px;
+  }
+  
+  .sidebar-subtitle {
+    font-size: 9px;
+  }
+}
+
+/* ============================================
+   Announcements Page Styles
+   Light & Dark Mode Compatible
+   ============================================ */
+
+/* Announcements Grid - Card Layout */
+.announcements-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+  gap: 1.25rem;
+  margin-top: 1.25rem;
+}
+
+/* Announcement Card */
+.announcement-card {
+  background: var(--admin-surface);
+  border: 1px solid var(--admin-border);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.announcement-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--admin-shadow);
+  border-color: var(--admin-accent);
+}
+
+/* Card Header */
+.announcement-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.25rem;
+  background: var(--admin-surface-alt);
+  border-bottom: 1px solid var(--admin-border);
+}
+
+.announcement-type-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.375rem 0.75rem;
+  border-radius: 2rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+.announcement-type-badge svg {
+  width: 14px;
+  height: 14px;
+}
+
+.announcement-card-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.icon-btn-small {
+  width: 28px;
+  height: 28px;
+  border-radius: 0.5rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: var(--admin-text-soft);
+  transition: all 0.2s ease;
+}
+
+.icon-btn-small:hover {
+  background: var(--admin-surface);
+  color: var(--admin-accent);
+}
+
+.icon-btn-small.danger:hover {
+  background: rgba(239, 68, 68, 0.1);
+  color: #ef4444;
+}
+
+/* Card Body */
+.announcement-card-body {
+  padding: 1.25rem;
+}
+
+.announcement-title {
+  margin: 0 0 0.5rem;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--admin-text-strong);
+  line-height: 1.4;
+}
+
+.announcement-message {
+  margin: 0;
+  font-size: 0.875rem;
+  color: var(--admin-text);
+  line-height: 1.5;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Card Footer */
+.announcement-card-footer {
+  padding: 0.75rem 1.25rem 1rem;
+  border-top: 1px solid var(--admin-border);
+  background: var(--admin-surface-alt);
+}
+
+.announcement-meta {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.meta-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  font-size: 0.7rem;
+  color: var(--admin-text-soft);
+}
+
+.meta-item svg {
+  opacity: 0.7;
+}
+
+/* Priority Badge */
+.priority-badge {
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.375rem;
+  font-size: 0.65rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.priority-badge.high {
+  background: rgba(239, 68, 68, 0.1);
+  color: #ef4444;
+}
+
+.priority-badge.medium {
+  background: rgba(245, 158, 11, 0.1);
+  color: #f59e0b;
+}
+
+.priority-badge.low {
+  background: rgba(34, 197, 94, 0.1);
+  color: #22c55e;
+}
+
+/* Announcement type variations */
+.announcement-card.event {
+  border-left: 3px solid #f59e0b;
+}
+
+.announcement-card.notice {
+  border-left: 3px solid #3b82f6;
+}
+
+.announcement-card.meeting {
+  border-left: 3px solid #8b5cf6;
+}
+
+/* Message View in Modal */
+.announcement-message-view {
+  padding: 1rem;
+  background: var(--admin-surface-alt);
+  border-radius: var(--radius-md);
+  line-height: 1.6;
+  color: var(--admin-text);
+}
+
+/* Empty State */
+.empty-state {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 4rem 2rem;
+  background: var(--admin-surface);
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--admin-border);
+}
+
+.empty-state svg {
+  margin-bottom: 1rem;
+  opacity: 0.5;
+  color: var(--admin-text-soft);
+}
+
+.empty-state p {
+  margin: 0.5rem 0 1rem;
+  color: var(--admin-text-soft);
+}
+
+/* Modal Large Size */
+.modal-lg-announcement {
+  width: min(620px, 90%);
+  max-width: 620px;
+}
+
+/* Form Row Modal */
+.form-row-modal {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+/* ============================================
+   Dark Mode Specific
+   ============================================ */
+.admin-shell.theme-dark .announcement-card {
+  background: var(--admin-surface);
+  border-color: var(--admin-border);
+}
+
+.admin-shell.theme-dark .announcement-card:hover {
+  border-color: var(--admin-accent);
+}
+
+.admin-shell.theme-dark .announcement-card-header {
+  background: var(--admin-surface-alt);
+  border-color: var(--admin-border);
+}
+
+.admin-shell.theme-dark .announcement-card-footer {
+  background: var(--admin-surface-alt);
+  border-color: var(--admin-border);
+}
+
+.admin-shell.theme-dark .announcement-message-view {
+  background: var(--admin-surface-alt);
+}
+
+.admin-shell.theme-dark .empty-state {
+  background: var(--admin-surface);
+  border-color: var(--admin-border);
+}
+
+/* ============================================
+   Responsive Styles
+   ============================================ */
+@media (max-width: 991px) {
+  .announcements-grid {
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 767px) {
+  .announcements-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .announcement-card-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+  
+  .announcement-card-actions {
+    width: 100%;
+    justify-content: flex-end;
+  }
+  
+  .announcement-meta {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+  
+  .form-row-modal {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+}
