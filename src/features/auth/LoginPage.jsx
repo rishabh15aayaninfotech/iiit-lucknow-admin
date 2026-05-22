@@ -4,6 +4,8 @@ import { Link, useNavigate } from 'react-router-dom'
 import { useToast } from '../../components/feedback/ToastProvider'
 import { useAuth } from '../../hooks/useAuth'
 import logo from '../../assets/IIITL_logo.png'
+import aayanlogo from '../../assets/aayanlogo.png'
+import makeinindia from '../../assets/makeinindia.png'
 
 function LoginPage() {
   const navigate = useNavigate()
@@ -46,78 +48,90 @@ function LoginPage() {
 
   return (
     <div className="login-page">
-      <div className="login-panel">
-        <div className="login-copy">
-          <span className="eyebrow">IIIT Lucknow</span>
-          <h1>Mess Management<br />Administrative Portal</h1>
-          <div className="login-highlights">
-            <div>
-              <strong>Meal Tracking</strong>
-              <span>Real-time booking vs consumption</span>
-            </div>
-            <div>
-              <strong>Wastage Analysis</strong>
-              <span>AI-powered reduction insights</span>
+      <div className="login-wrapper">
+        <div className="login-panel">
+          <div className="login-copy">
+            <span className="eyebrow">IIIT Lucknow</span>
+            <h1>Mess Management<br />Administrative Portal</h1>
+            <div className="login-highlights">
+              <div>
+                <strong>Meal Tracking</strong>
+                <span>Real-time booking vs consumption</span>
+              </div>
+              <div>
+                <strong>Wastage Analysis</strong>
+                <span>AI-powered reduction insights</span>
+              </div>
             </div>
           </div>
+
+          <form className="login-card" onSubmit={handleSubmit}>
+            <div style={{ display: 'flex', justifyContent: 'center', marginBottom: 24 }}>
+              <img src={logo} alt="IIIT Lucknow Logo" style={{ maxWidth: 120, height: 'auto' }} />
+            </div>
+
+            <label className="login-field">
+              <span>Email Address</span>
+              <div className="login-input-wrap">
+                <FiMail />
+                <input
+                  type="email"
+                  name="email"
+                  placeholder="messadmin@iiitl.ac.in"
+                  value={formData.email}
+                  onChange={(event) =>
+                    setFormData((current) => ({ ...current, email: event.target.value }))
+                  }
+                  autoComplete="email"
+                  required
+                />
+              </div>
+            </label>
+
+            <label className="login-field">
+              <span>Password</span>
+              <div className="login-input-wrap">
+                <FiLock />
+                <input
+                  type={showPassword ? 'text' : 'password'}
+                  name="password"
+                  placeholder="••••••••"
+                  value={formData.password}
+                  onChange={(event) =>
+                    setFormData((current) => ({ ...current, password: event.target.value }))
+                  }
+                  autoComplete="current-password"
+                  required
+                />
+                <button
+                  type="button"
+                  className="password-visibility-toggle"
+                  onClick={() => setShowPassword((current) => !current)}
+                  aria-label={showPassword ? 'Hide password' : 'Show password'}
+                >
+                  {showPassword ? <FiEyeOff /> : <FiEye />}
+                </button>
+              </div>
+            </label>
+
+            <button type="submit" className="login-submit" disabled={isSubmitting}>
+              <span>{isSubmitting ? 'Authenticating...' : 'Access Mess Dashboard'}</span>
+              <FiArrowRight />
+            </button>
+          </form>
         </div>
 
-        <form className="login-card" onSubmit={handleSubmit}>
-          <div style={{ display: 'flex', justifyContent: 'center', marginBottom: 24 }}>
-            <img src={logo} alt="IIIT Lucknow Logo" style={{ maxWidth: 120, height: 'auto' }} />
+        {/* Footer */}
+        <div className="login-footer">
+          <div className="footer-left">
+            <span>© {new Date().getFullYear()} IIIT Lucknow. All rights reserved.</span>
           </div>
-
-          <label className="login-field">
-            <span>Email Address</span>
-            <div className="login-input-wrap">
-              <FiMail />
-              <input
-                type="email"
-                name="email"
-                placeholder="messadmin@iiitl.ac.in"
-                value={formData.email}
-                onChange={(event) =>
-                  setFormData((current) => ({ ...current, email: event.target.value }))
-                }
-                autoComplete="email"
-                required
-              />
-            </div>
-          </label>
-
-          <label className="login-field">
-            <span>Password</span>
-            <div className="login-input-wrap">
-              <FiLock />
-              <input
-                type={showPassword ? 'text' : 'password'}
-                name="password"
-                placeholder="••••••••"
-                value={formData.password}
-                onChange={(event) =>
-                  setFormData((current) => ({ ...current, password: event.target.value }))
-                }
-                autoComplete="current-password"
-                required
-              />
-              <button
-                type="button"
-                className="password-visibility-toggle"
-                onClick={() => setShowPassword((current) => !current)}
-                aria-label={showPassword ? 'Hide password' : 'Show password'}
-              >
-                {showPassword ? <FiEyeOff /> : <FiEye />}
-              </button>
-            </div>
-          </label>
-
-          <button type="submit" className="login-submit" disabled={isSubmitting}>
-            <span>{isSubmitting ? 'Authenticating...' : 'Access Mess Dashboard'}</span>
-            <FiArrowRight />
-          </button>
-
-         
-        </form>
+          <div className="footer-right">
+            <span>Designed & Developed by</span>
+            <strong><a href="https://aayaninfotech.com/" target="_blank" rel="noopener noreferrer"><img src={aayanlogo} alt="Aayan Logo" /></a></strong>
+            <span className="india-logo"><img src={makeinindia} alt="Make in India" /></span>
+          </div>
+        </div>
       </div>
     </div>
   )

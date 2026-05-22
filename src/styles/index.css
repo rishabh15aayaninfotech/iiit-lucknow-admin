@@ -69,9 +69,16 @@ a {
     radial-gradient(circle at bottom right, rgba(16, 56, 64, 0.15), transparent 30%),
     linear-gradient(135deg, #eff3f7 0%, #f8f8fb 100%);
 }
+.login-wrapper {
+  width: min(1160px, 100%);
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  min-height: calc(100vh - 64px);
+}
 
 .login-panel {
-  width: min(1160px, 100%);
+  width: 100%;
   display: grid;
   grid-template-columns: 1.15fr 0.85fr;
   background: rgba(255, 255, 255, 0.8);
@@ -8370,3 +8377,306 @@ a {
   overflow-wrap: break-word;
 }
 
+/* Footer Styles */
+.login-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 24px;
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(18px);
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  font-size: 13px;
+  color: var(--text-soft);
+  margin-top: auto;
+}
+
+.footer-left,
+.footer-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.footer-right strong {
+  color: var(--dark);
+  font-weight: 700;
+}
+
+.india-logo {
+  font-size: 18px;
+  margin: 0 4px;
+}
+
+/* Login copy padding adjustment */
+.login-copy {
+  padding: 40px;
+  background: linear-gradient(
+    180deg,
+    #109878 0%,
+    #109070 50%,
+    #18B090 100%
+  );
+  color: #fff;
+}
+
+/* Login card padding */
+.login-card {
+  padding: 30px 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 22px;
+}
+
+/* Responsive Footer */
+@media (max-width: 767px) {
+  .login-page {
+    padding: 16px;
+  }
+  
+  .login-wrapper {
+    gap: 16px;
+    min-height: calc(100vh - 32px);
+  }
+  
+  .login-footer {
+    flex-direction: column;
+    text-align: center;
+    gap: 12px;
+    padding: 12px 16px;
+  }
+  
+  .footer-left,
+  .footer-right {
+    justify-content: center;
+  }
+  
+  .india-logo {
+    font-size: 16px;
+  }
+  
+  .login-panel {
+    grid-template-columns: 1fr;
+  }
+  
+  .login-copy,
+  .login-card {
+    padding: 30px 24px;
+  }
+}
+
+/* Dark mode support */
+.admin-shell.theme-dark .login-footer {
+  background: rgba(22, 29, 38, 0.9);
+  border-color: var(--admin-border);
+  color: var(--admin-text-soft);
+}
+
+.admin-shell.theme-dark .footer-right strong {
+  color: var(--admin-accent);
+}
+
+/* Small mobile */
+@media (max-width: 480px) {
+  .login-copy h1 {
+    font-size: 24px;
+  }
+  
+  .login-highlights div {
+    padding: 12px 16px;
+  }
+  
+  .login-highlights strong {
+    font-size: 16px;
+  }
+  
+  .login-footer {
+    font-size: 11px;
+  }
+  
+  .india-logo {
+    font-size: 14px;
+  }
+}
+
+
+/* Sidebar Credits Section - Designed & Developed by */
+.sidebar-credits {
+  padding: 5px 5px;
+  margin-bottom: 12px;
+  border-bottom: 1px solid var(--admin-border);
+}
+
+/* Logos in one row */
+.credits-logos {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 5px;
+  flex-wrap: wrap;
+}
+
+.credit-logo-link {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.credit-logo {
+  height: 32px;
+  width: auto;
+  object-fit: contain;
+  transition: opacity 0.2s ease;
+}
+
+.aayan-logo {
+  max-height: 32px;
+}
+
+.makeinindia-logo {
+  max-height: 28px;
+}
+
+.credit-logo-link:hover .credit-logo {
+  opacity: 0.8;
+}
+
+.credits-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  text-align: center;
+}
+
+.credits-label {
+  font-size: 12px;
+  color: var(--admin-text-soft);
+  letter-spacing: 0.5px;
+}
+
+.credits-team {
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.credits-link {
+  color: var(--admin-accent);
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+
+.credits-link:hover {
+  opacity: 0.8;
+  text-decoration: underline;
+}
+
+.credits-tagline {
+  font-size: 9px;
+  color: var(--admin-text-soft);
+  letter-spacing: 0.3px;
+}
+
+/* Collapsed sidebar credits */
+.sidebar-credits-collapsed {
+  padding: 12px 0;
+  margin-bottom: 12px;
+  border-top: 1px solid var(--admin-border);
+  border-bottom: 1px solid var(--admin-border);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+}
+
+.collapsed-logo {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+}
+
+/* Sidebar user section adjustments */
+.sidebar-user {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 12px;
+}
+
+.sidebar-user h6 {
+  margin: 0 0 2px;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--admin-text-strong);
+}
+
+.sidebar-user p {
+  margin: 0;
+  color: var(--admin-text-soft);
+  font-size: 11px;
+}
+
+/* Dark mode support */
+.admin-shell.theme-dark .sidebar-credits {
+  background: var(--admin-surface-alt);
+  border-color: var(--admin-border);
+}
+
+.admin-shell.theme-dark .credits-label,
+.admin-shell.theme-dark .credits-tagline {
+  color: var(--admin-text-soft);
+}
+
+.admin-shell.theme-dark .credits-link {
+  color: var(--admin-accent);
+}
+
+/* Responsive adjustments */
+@media (max-width: 991px) {
+  .sidebar-credits {
+    padding: 10px 12px;
+  }
+  
+  .credit-logo {
+    height: 28px;
+  }
+  
+  .aayan-logo {
+    max-height: 28px;
+  }
+  
+  .makeinindia-logo {
+    max-height: 24px;
+  }
+  
+  .credits-team {
+    font-size: 11px;
+  }
+  
+  .credits-tagline {
+    font-size: 8px;
+  }
+}
+
+/* For very small screens */
+@media (max-width: 768px) {
+  .credits-logos {
+    gap: 12px;
+  }
+  
+  .credit-logo {
+    height: 24px;
+  }
+  
+  .aayan-logo {
+    max-height: 24px;
+  }
+  
+  .makeinindia-logo {
+    max-height: 20px;
+  }
+}

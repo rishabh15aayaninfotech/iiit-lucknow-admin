@@ -31,6 +31,8 @@ import { HiOutlineBuildingStorefront } from 'react-icons/hi2'
 import { sidebarSections } from '../../data/messMockData'
 import { useAuth } from '../../hooks/useAuth'
 import logo from '../../assets/IIITL_logo.png'
+import aayanlogo from '../../assets/aayanlogo.png'
+import makeinindia from '../../assets/makeinindia.png'
 
 const iconMap = {
   dashboard: FiGrid,
@@ -181,12 +183,39 @@ function Sidebar({ isOpen, onClose, currentPath, isCollapsed, onToggleCollapse }
         </div>
 
         <div className="sidebar-footer">
+          {/* Designed & Developed by Section with logos in one line */}
+          {!isCollapsed && (
+            <div className="sidebar-credits">
+              {/* Logos in one row */}
+              <div className="credits-content">
+                <span className="credits-label">Designed & Developed by</span>
+              </div>
+              <div className="credits-logos">
+                <a href="https://aayaninfotech.com/" target="_blank" rel="noopener noreferrer" className="credit-logo-link">
+                  <img src={aayanlogo} alt="Aayan Infotech" className="credit-logo aayan-logo" />
+                </a>
+                <img src={makeinindia} alt="Make in India" className="credit-logo makeinindia-logo" />
+              </div>
+              
+            </div>
+          )}
+          
+          {/* Collapsed version - only icons */}
+          {isCollapsed && (
+            <div className="sidebar-credits-collapsed" title="Designed & Developed by AI Aayan Infotech | Made in India">
+              <img src={aayanlogo} alt="Aayan" className="collapsed-logo" />
+              <img src={makeinindia} alt="Made in India" className="collapsed-logo" />
+            </div>
+          )}
+          
           <div className="sidebar-user">
             <div className="avatar avatar-sm">{getInitials(currentUser?.name)}</div>
-            <div className="sidebar-user-copy">
-              <h6>{currentUser?.name || 'Mess Admin'}</h6>
-              <p>{currentUser?.email || 'admin@iiitl.ac.in'}</p>
-            </div>
+            {!isCollapsed && (
+              <div className="sidebar-user-copy">
+                <h6>{currentUser?.name || 'Mess Admin'}</h6>
+                <p>{currentUser?.email || 'admin@iiitl.ac.in'}</p>
+              </div>
+            )}
             <button
               type="button"
               className="sidebar-logout-button"
