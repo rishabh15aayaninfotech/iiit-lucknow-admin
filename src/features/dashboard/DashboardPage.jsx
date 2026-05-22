@@ -324,7 +324,7 @@ function DashboardPage() {
               <h3>Announcements & Alerts</h3>
             </div>
             <button type="button" className="outline-action">
-              + New Announcement
+              + Add New
             </button>
           </div>
 
