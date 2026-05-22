@@ -1,32 +1,38 @@
 import { useState } from 'react'
-import { 
-  FiAlertTriangle, FiCalendar, FiTrendingUp, FiTrendingDown, 
-  FiDollarSign, FiUsers, FiCoffee, FiBarChart2, FiBell 
+import {
+  FiAlertTriangle,
+  FiBarChart2,
+  FiBell,
+  FiCalendar,
+  FiCoffee,
+  FiDollarSign,
+  FiTrendingDown,
+  FiTrendingUp,
+  FiUsers,
 } from 'react-icons/fi'
 import {
-  dashboardStats,
-  wastageData,
-  recentTransactions,
-  consumptionData,
   announcements,
-  revenueReports,
-  weeklySchedule,
+  consumptionData,
+  dashboardStats,
   mealRequests,
-  staffList
+  recentTransactions,
+  revenueReports,
+  staffList,
+  wastageData,
+  weeklySchedule,
 } from '../../data/messMockData'
 
 function DashboardPage() {
   const [selectedPeriod, setSelectedPeriod] = useState('daily')
-  
-  // Generate chart paths
+
   const chartPath = consumptionData
     .map((point, index) => {
       const x = (index / (consumptionData.length - 1)) * 100
-      const y1 = 100 - (point.booked / 1400) * 100
-      return `${index === 0 ? 'M' : 'L'} ${x} ${y1}`
+      const y = 100 - (point.booked / 1400) * 100
+      return `${index === 0 ? 'M' : 'L'} ${x} ${y}`
     })
     .join(' ')
-    
+
   const chartPath2 = consumptionData
     .map((point, index) => {
       const x = (index / (consumptionData.length - 1)) * 100
@@ -35,20 +41,23 @@ function DashboardPage() {
     })
     .join(' ')
 
-  // Helper function to get icon component
   const getStatIcon = (iconName) => {
-    switch(iconName) {
-      case 'users': return <FiUsers size={24} />
-      case 'coffee': return <FiCoffee size={24} />
-      case 'trending-down': return <FiTrendingDown size={24} />
-      case 'dollar-sign': return <FiDollarSign size={24} />
-      default: return <FiBarChart2 size={24} />
+    switch (iconName) {
+      case 'users':
+        return <FiUsers size={24} />
+      case 'coffee':
+        return <FiCoffee size={24} />
+      case 'trending-down':
+        return <FiTrendingDown size={24} />
+      case 'dollar-sign':
+        return <FiDollarSign size={24} />
+      default:
+        return <FiBarChart2 size={24} />
     }
   }
 
   return (
     <div className="dashboard-page dashboard-perfect">
-      {/* Stats Grid */}
       <section className="stats-grid dashboard-stats-grid">
         {dashboardStats.map((card) => (
           <article className="panel stat-card dashboard-stat-card" key={card.title}>
@@ -57,19 +66,19 @@ function DashboardPage() {
                 <h3>{card.title}</h3>
                 <p>{card.subtitle}</p>
               </div>
-              <div className="stat-icon">
-                {getStatIcon(card.icon)}
-              </div>
+              <div className="stat-icon">{getStatIcon(card.icon)}</div>
             </div>
 
             {card.split ? (
-              <div className="split-metrics">
+              <div className="split-metrics dashboard-split-columns">
                 {card.split.map((item) => (
                   <div key={item.label} className="split-metric">
                     <span>{item.label}</span>
                     <div className="d-flex align-items-end gap-2 flex-wrap">
                       <strong>{item.value}</strong>
-                      <small className={item.meta.startsWith('-') ? 'text-danger' : ''}>{item.meta}</small>
+                      <small className={item.meta.startsWith('-') ? 'text-danger' : ''}>
+                        {item.meta}
+                      </small>
                     </div>
                   </div>
                 ))}
@@ -84,28 +93,25 @@ function DashboardPage() {
                 <small className="stat-previous">{card.previous}</small>
               </>
             )}
-
-            
           </article>
         ))}
       </section>
 
-      {/* Consumption vs Booking Chart & Wastage */}
       <section className="content-grid dashboard-main-grid">
         <article className="panel revenue-panel dashboard-revenue-panel">
           <div className="panel-header dashboard-panel-header">
             <h3>Meal Consumption vs Bookings</h3>
             <div className="d-flex align-items-center gap-2">
               <div className="toggle-pill dashboard-toggle-pill">
-                <button 
-                  type="button" 
+                <button
+                  type="button"
                   className={selectedPeriod === 'weekly' ? 'active' : ''}
                   onClick={() => setSelectedPeriod('weekly')}
                 >
                   This Week
                 </button>
-                <button 
-                  type="button" 
+                <button
+                  type="button"
                   className={selectedPeriod === 'monthly' ? 'active' : ''}
                   onClick={() => setSelectedPeriod('monthly')}
                 >
@@ -145,8 +151,14 @@ function DashboardPage() {
               </div>
             </div>
             <div className="chart-legend">
-              <span><span className="legend-dot booked"></span> Booked</span>
-              <span><span className="legend-dot consumed"></span> Consumed</span>
+              <span>
+                <span className="legend-dot booked" />
+                Booked
+              </span>
+              <span>
+                <span className="legend-dot consumed" />
+                Consumed
+              </span>
             </div>
           </div>
         </article>
@@ -163,8 +175,10 @@ function DashboardPage() {
 
           <div className="wastage-stats">
             <div className="wastage-item">
-              <span>Food Wasted Today</span>
-              <strong>{wastageData.daily} kg</strong>
+              <div>
+                <span>Food Wasted Today</span>
+                <strong>{wastageData.daily} kg</strong>
+              </div>
               <small>Cost: {wastageData.costPerDay}</small>
             </div>
             <div className="wastage-item">
@@ -172,10 +186,10 @@ function DashboardPage() {
               <strong>{wastageData.weekly} kg</strong>
             </div>
             <div className="wastage-recommendations">
-              <p className="muted-copy">Recommendations:</p>
+              <p className="muted-copy">Recommendations</p>
               <ul>
-                {wastageData.recommendations.map((rec, idx) => (
-                  <li key={idx}>{rec}</li>
+                {wastageData.recommendations.map((rec) => (
+                  <li key={rec}>{rec}</li>
                 ))}
               </ul>
             </div>
@@ -187,69 +201,86 @@ function DashboardPage() {
         </article>
       </section>
 
-      {/* Revenue Reports & Recent Transactions */}
       <section className="bottom-grid dashboard-bottom-grid">
         <article className="panel table-panel dashboard-table-panel">
           <div className="panel-header dashboard-panel-header">
             <h3>Revenue Reports</h3>
             <div className="toggle-pill">
-              <button type="button" className={selectedPeriod === 'daily' ? 'active' : ''} onClick={() => setSelectedPeriod('daily')}>Daily</button>
-              <button type="button" className={selectedPeriod === 'weekly' ? 'active' : ''} onClick={() => setSelectedPeriod('weekly')}>Weekly</button>
-              <button type="button" className={selectedPeriod === 'monthly' ? 'active' : ''} onClick={() => setSelectedPeriod('monthly')}>Monthly</button>
+              <button
+                type="button"
+                className={selectedPeriod === 'daily' ? 'active' : ''}
+                onClick={() => setSelectedPeriod('daily')}
+              >
+                Daily
+              </button>
+              <button
+                type="button"
+                className={selectedPeriod === 'weekly' ? 'active' : ''}
+                onClick={() => setSelectedPeriod('weekly')}
+              >
+                Weekly
+              </button>
+              <button
+                type="button"
+                className={selectedPeriod === 'monthly' ? 'active' : ''}
+                onClick={() => setSelectedPeriod('monthly')}
+              >
+                Monthly
+              </button>
             </div>
           </div>
 
-          {selectedPeriod === 'daily' && (
+          {selectedPeriod === 'daily' ? (
             <div className="revenue-details">
               <div className="revenue-summary">
                 <div className="revenue-card">
                   <FiDollarSign />
                   <div>
-                    <strong>₹{revenueReports.daily.total.toLocaleString()}</strong>
+                    <strong>Rs. {revenueReports.daily.total.toLocaleString()}</strong>
                     <span>Total Today</span>
                   </div>
                 </div>
                 <div className="revenue-breakdown">
-                  <div>Breakfast: ₹{revenueReports.daily.breakfast.toLocaleString()}</div>
-                  <div>Lunch: ₹{revenueReports.daily.lunch.toLocaleString()}</div>
-                  <div>Dinner: ₹{revenueReports.daily.dinner.toLocaleString()}</div>
+                  <div>Breakfast: Rs. {revenueReports.daily.breakfast.toLocaleString()}</div>
+                  <div>Lunch: Rs. {revenueReports.daily.lunch.toLocaleString()}</div>
+                  <div>Dinner: Rs. {revenueReports.daily.dinner.toLocaleString()}</div>
                 </div>
               </div>
             </div>
-          )}
+          ) : null}
 
-          {selectedPeriod === 'weekly' && (
+          {selectedPeriod === 'weekly' ? (
             <div className="revenue-details">
               <div className="revenue-summary">
                 <div className="revenue-card">
                   <FiTrendingUp />
                   <div>
-                    <strong>₹{revenueReports.weekly.total.toLocaleString()}</strong>
+                    <strong>Rs. {revenueReports.weekly.total.toLocaleString()}</strong>
                     <span>This Week</span>
                     <small>{revenueReports.weekly.comparedToLastWeek}</small>
                   </div>
                 </div>
                 <div className="revenue-breakdown">
-                  <div>Daily Average: ₹{revenueReports.weekly.average.toLocaleString()}</div>
+                  <div>Daily Average: Rs. {revenueReports.weekly.average.toLocaleString()}</div>
                 </div>
               </div>
             </div>
-          )}
+          ) : null}
 
-          {selectedPeriod === 'monthly' && (
+          {selectedPeriod === 'monthly' ? (
             <div className="revenue-details">
               <div className="revenue-summary">
                 <div className="revenue-card">
                   <FiBarChart2 />
                   <div>
-                    <strong>₹{revenueReports.monthly.total.toLocaleString()}</strong>
+                    <strong>Rs. {revenueReports.monthly.total.toLocaleString()}</strong>
                     <span>{revenueReports.monthly.month}</span>
-                    <small>Projected: ₹{revenueReports.monthly.projected.toLocaleString()}</small>
+                    <small>Projected: Rs. {revenueReports.monthly.projected.toLocaleString()}</small>
                   </div>
                 </div>
               </div>
             </div>
-          )}
+          ) : null}
 
           <div className="table-responsive mt-3">
             <table className="table admin-table dashboard-admin-table align-middle mb-0">
@@ -268,7 +299,7 @@ function DashboardPage() {
                     <td>{item.id}</td>
                     <td>{item.user}</td>
                     <td>{item.plan}</td>
-                    <td>₹{item.amount}</td>
+                    <td>Rs. {item.amount}</td>
                     <td>
                       <span className={`status-dot ${item.status === 'completed' ? 'success' : 'warning'}`}>
                         {item.status}
@@ -306,7 +337,7 @@ function DashboardPage() {
                 <div>
                   <strong>{announcement.title}</strong>
                   <p>{announcement.message}</p>
-                  <small>{announcement.date} • {announcement.audience}</small>
+                  <small>{announcement.date} | {announcement.audience}</small>
                 </div>
               </div>
             ))}
@@ -314,11 +345,10 @@ function DashboardPage() {
         </article>
       </section>
 
-      {/* Weekly Schedule & Special Requests */}
       <section className="bottom-grid lower-grid dashboard-lower-grid">
         <article className="panel table-panel dashboard-table-panel">
           <div className="panel-header dashboard-panel-header">
-            <h3>Today's Menu Schedule</h3>
+            <h3>Today&apos;s Menu Schedule</h3>
             <FiCalendar />
           </div>
 
@@ -327,8 +357,10 @@ function DashboardPage() {
               <h4>Breakfast</h4>
               <p className="time">{weeklySchedule.breakfast.time}</p>
               <div className="menu-items">
-                {weeklySchedule.breakfast.items.map((item, idx) => (
-                  <span key={idx} className="menu-tag">{item}</span>
+                {weeklySchedule.breakfast.items.map((item) => (
+                  <span key={item} className="menu-tag">
+                    {item}
+                  </span>
                 ))}
               </div>
             </div>
@@ -336,8 +368,10 @@ function DashboardPage() {
               <h4>Lunch</h4>
               <p className="time">{weeklySchedule.lunch.time}</p>
               <div className="menu-items">
-                {weeklySchedule.lunch.items.map((item, idx) => (
-                  <span key={idx} className="menu-tag">{item}</span>
+                {weeklySchedule.lunch.items.map((item) => (
+                  <span key={item} className="menu-tag">
+                    {item}
+                  </span>
                 ))}
               </div>
             </div>
@@ -345,8 +379,10 @@ function DashboardPage() {
               <h4>Dinner</h4>
               <p className="time">{weeklySchedule.dinner.time}</p>
               <div className="menu-items">
-                {weeklySchedule.dinner.items.map((item, idx) => (
-                  <span key={idx} className="menu-tag">{item}</span>
+                {weeklySchedule.dinner.items.map((item) => (
+                  <span key={item} className="menu-tag">
+                    {item}
+                  </span>
                 ))}
               </div>
             </div>
@@ -362,29 +398,35 @@ function DashboardPage() {
         <aside className="panel performers-panel dashboard-performers-panel">
           <h3>Special Requests Pending</h3>
           <p className="muted-copy mb-3">Student & Staff Requests</p>
-          
+
           <div className="requests-list">
-            {mealRequests.filter(r => r.status === 'pending').map((request) => (
-              <div key={request.id} className="request-item">
-                <div className={`request-priority ${request.priority}`} />
-                <div>
-                  <strong>{request.user}</strong>
-                  <span>{request.request}</span>
-                  <small>{request.date}</small>
+            {mealRequests
+              .filter((request) => request.status === 'pending')
+              .map((request) => (
+                <div key={request.id} className="request-item">
+                  <div className={`request-priority ${request.priority}`} />
+                  <div className="request-content">
+                    <strong>{request.user}</strong>
+                    <span>{request.request}</span>
+                    <small>{request.date}</small>
+                  </div>
+                  <div className="request-actions">
+                    <button type="button" className="btn-sm success">
+                      Approve
+                    </button>
+                    <button type="button" className="btn-sm danger">
+                      Reject
+                    </button>
+                  </div>
                 </div>
-                <div className="request-actions">
-                  <button className="btn-sm success">Approve</button>
-                  <button className="btn-sm danger">Reject</button>
-                </div>
-              </div>
-            ))}
+              ))}
           </div>
 
           <div className="staff-access mt-3">
             <h4>Staff Access</h4>
             {staffList.map((staff) => (
               <div key={staff.id} className="staff-item">
-                <div>
+                <div className="staff-content">
                   <strong>{staff.name}</strong>
                   <span>{staff.role}</span>
                 </div>
@@ -394,7 +436,7 @@ function DashboardPage() {
           </div>
 
           <a href="#manage-staff" className="see-more-link">
-            Manage Staff Access →
+            Manage Staff Access
           </a>
         </aside>
       </section>

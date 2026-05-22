@@ -15,6 +15,7 @@ import {
   FiDownload,
   FiUserPlus,
   FiLock,
+  FiAlertCircle,  // Added missing import
 } from 'react-icons/fi'
 import { useToast } from '../../components/feedback/ToastProvider'
 
@@ -121,7 +122,7 @@ function MessStaffManagement() {
       setName(staffMember.name)
       setRole(staffMember.role)
       setEmail(staffMember.email)
-      setPhone(staffMember.phone)
+      setPhone(staffMember.phone || '')
       setDepartment(staffMember.department)
       setAccess(staffMember.access)
       setUsername(staffMember.username)
@@ -146,6 +147,15 @@ function MessStaffManagement() {
     setShowModal(false)
     setIsEditing(false)
     setCurrentStaff(null)
+    // Reset form
+    setName('')
+    setRole('Kitchen Staff')
+    setEmail('')
+    setPhone('')
+    setDepartment('Kitchen')
+    setAccess('basic')
+    setUsername('')
+    setPassword('')
   }
 
   const openViewModal = (staffMember) => {
@@ -174,9 +184,13 @@ function MessStaffManagement() {
     setGeneratedCredentials(null)
   }
 
-  const copyToClipboard = (text, type) => {
-    navigator.clipboard.writeText(text)
-    toast.success(`${type} copied to clipboard`)
+  const copyToClipboard = async (text, type) => {
+    try {
+      await navigator.clipboard.writeText(text)
+      toast.success(`${type} copied to clipboard`)
+    } catch (err) {
+      toast.error('Failed to copy', 'Error')
+    }
   }
 
   const handleSave = () => {
