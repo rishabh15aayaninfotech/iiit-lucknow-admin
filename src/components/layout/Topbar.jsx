@@ -73,10 +73,10 @@ function Topbar({ onMenuClick, theme, onToggleTheme }) {
 
           {profileOpen ? (
             <div className="profile-dropdown">
-              <button type="button" className="profile-dropdown-item" onClick={handleProfileClick}>
+              {/* <button type="button" className="profile-dropdown-item" onClick={handleProfileClick}>
                 <FiUser />
                 <span>My Profile</span>
-              </button>
+              </button> */}
               <button type="button" className="profile-dropdown-item danger" onClick={handleLogout}>
                 <FiLogOut />
                 <span>Logout</span>

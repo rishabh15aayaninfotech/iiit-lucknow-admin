@@ -1,43 +1,45 @@
-import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
-import AdminLayout from '../components/layout/AdminLayout'
-import ForgotPasswordPage from '../features/auth/ForgotPasswordPage'
-import LoginPage from '../features/auth/LoginPage'
-import DashboardPage from '../features/dashboard/DashboardPage'
-import OrderManagementPage from '../features/orders/OrderManagementPage'
-import PaymentCommissionPage from '../features/payments/PaymentCommissionPage'
-import PartnerShopManagementPage from '../features/partners/PartnerShopManagementPage'
-import PromotionMarketingPage from '../features/promotions/PromotionMarketingPage'
-import ContentMediaPage from '../features/content/ContentMediaPage'
-import SupportTicketPage from '../features/support/SupportTicketPage'
-import ReviewFeedbackPage from '../features/reviews/ReviewFeedbackPage'
-import LoyaltyReferralPage from '../features/loyalty/LoyaltyReferralPage'
-import AffiliateProgramPage from '../features/affiliate/AffiliateProgramPage'
-import CategoryManagementPage from '../features/categories/CategoryManagementPage'
-import UserManagementPage from '../features/users/UserManagementPage'
-import VendorManagementPage from '../features/vendors/VendorManagementPage'
-import { useAuth } from '../hooks/useAuth'
-import MealPlanManagementPage from '../features/mealplans/MealPlanManagementPage'
-import SpecialRequestsPage from '../features/requests/SpecialRequestsPage'
-import AnnouncementsPage from '../features/announcements/AnnouncementsPage'
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
+import AdminLayout from "../components/layout/AdminLayout";
+import ForgotPasswordPage from "../features/auth/ForgotPasswordPage";
+import LoginPage from "../features/auth/LoginPage";
+import DashboardPage from "../features/dashboard/DashboardPage";
+import OrderManagementPage from "../features/orders/OrderManagementPage";
+import PaymentCommissionPage from "../features/payments/PaymentCommissionPage";
+import PartnerShopManagementPage from "../features/partners/PartnerShopManagementPage";
+import PromotionMarketingPage from "../features/promotions/PromotionMarketingPage";
+import ContentMediaPage from "../features/content/ContentMediaPage";
+import SupportTicketPage from "../features/support/SupportTicketPage";
+import ReviewFeedbackPage from "../features/reviews/ReviewFeedbackPage";
+import LoyaltyReferralPage from "../features/loyalty/LoyaltyReferralPage";
+import AffiliateProgramPage from "../features/affiliate/AffiliateProgramPage";
+import CategoryManagementPage from "../features/categories/CategoryManagementPage";
+import UserManagementPage from "../features/users/UserManagementPage";
+import VendorManagementPage from "../features/vendors/VendorManagementPage";
+import { useAuth } from "../hooks/useAuth";
+import MealPlanManagementPage from "../features/mealplans/MealPlanManagementPage";
+import SpecialRequestsPage from "../features/requests/SpecialRequestsPage";
+import AnnouncementsPage from "../features/announcements/AnnouncementsPage";
+import MessStaffManagement from "../features/staff/MessStaffManagement";
+import WeeklyMenuManagement from "../features/menu/WeeklyMenuManagement";
 
 function ProtectedRoute({ children }) {
-  const { isAuthenticated } = useAuth()
+  const { isAuthenticated } = useAuth();
 
   if (!isAuthenticated) {
-    return <Navigate to="/login" replace />
+    return <Navigate to="/login" replace />;
   }
 
-  return children
+  return children;
 }
 
 function PublicRoute({ children }) {
-  const { isAuthenticated } = useAuth()
+  const { isAuthenticated } = useAuth();
 
   if (isAuthenticated) {
-    return <Navigate to="/dashboard" replace />
+    return <Navigate to="/dashboard" replace />;
   }
 
-  return children
+  return children;
 }
 
 function AppRouter() {
@@ -85,11 +87,13 @@ function AppRouter() {
           <Route path="meal-plans" element={<MealPlanManagementPage />} />
           <Route path="special-requests" element={<SpecialRequestsPage />} />
           <Route path="announcements" element={<AnnouncementsPage />} />
+          <Route path="mess-staff" element={<MessStaffManagement />} />
+          <Route path="weekly-menu" element={<WeeklyMenuManagement />} />
         </Route>
         <Route path="*" element={<Navigate to="/dashboard" replace />} />
       </Routes>
     </BrowserRouter>
-  )
+  );
 }
 
-export default AppRouter
+export default AppRouter;

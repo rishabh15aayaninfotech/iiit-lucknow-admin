@@ -3,6 +3,7 @@ import { FiArrowRight, FiEye, FiEyeOff, FiLock, FiMail } from 'react-icons/fi'
 import { Link, useNavigate } from 'react-router-dom'
 import { useToast } from '../../components/feedback/ToastProvider'
 import { useAuth } from '../../hooks/useAuth'
+import logo from '../../assets/IIITL_logo.png'
 
 function LoginPage() {
   const navigate = useNavigate()
@@ -49,7 +50,6 @@ function LoginPage() {
         <div className="login-copy">
           <span className="eyebrow">IIIT Lucknow</span>
           <h1>Mess Management<br />Administrative Portal</h1>
-          
           <div className="login-highlights">
             <div>
               <strong>Meal Tracking</strong>
@@ -59,14 +59,12 @@ function LoginPage() {
               <strong>Wastage Analysis</strong>
               <span>AI-powered reduction insights</span>
             </div>
-            
           </div>
         </div>
 
         <form className="login-card" onSubmit={handleSubmit}>
-          <div>
-            <h2>Mess Admin Access</h2>
-            <p className="login-subtitle">Enter your credentials to manage the mess operations.</p>
+          <div style={{ display: 'flex', justifyContent: 'center', marginBottom: 24 }}>
+            <img src={logo} alt="IIIT Lucknow Logo" style={{ maxWidth: 120, height: 'auto' }} />
           </div>
 
           <label className="login-field">
