@@ -621,6 +621,13 @@ a {
   z-index: 1020;
 }
 
+.topbar-start {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+}
+
 .page-title {
   margin: 0;
   font-size: 18px;
@@ -6075,7 +6082,6 @@ a {
     width: var(--sidebar-width) !important;
     transform: translateX(-100%);
     transition: transform 0.25s ease;
-    box-shadow: 0 24px 60px rgba(15, 23, 42, 0.18);
   }
 
   .admin-sidebar.open {
@@ -7243,3 +7249,779 @@ a {
     gap: 0;
   }
 }
+
+/* ============================================
+   GLOBAL RESPONSIVE FIXES
+   ============================================ */
+
+/* Ensure all containers respect viewport width */
+.admin-content {
+  padding: 18px;
+  background: var(--admin-bg);
+  overflow-x: hidden;
+  width: 100%;
+  max-width: 100%;
+}
+
+/* Fix for all management pages */
+.management-page,
+.dashboard-page,
+.orders-page {
+  display: grid;
+  gap: 18px;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+/* Fix for all panels */
+.panel {
+  background: var(--admin-surface);
+  border: 1px solid var(--admin-border);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--admin-shadow);
+  padding: 18px;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+/* ============================================
+   RESPONSIVE BREAKPOINTS
+   ============================================ */
+
+/* Tablet - Medium screens (max-width: 991px) */
+@media (max-width: 991px) {
+  .admin-content {
+    padding: 12px;
+  }
+  
+  .management-page {
+    gap: 12px;
+  }
+  
+  .panel {
+    padding: 14px;
+  }
+  
+  /* Fix stats grid */
+  .stats-grid,
+  .order-stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+  
+  /* Fix dashboard grids */
+  .dashboard-main-grid,
+  .dashboard-bottom-grid,
+  .dashboard-lower-grid,
+  .content-grid,
+  .bottom-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  
+  /* Fix management hero grid */
+  .management-hero-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  
+  /* Fix overview metric grid */
+  .overview-metric-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+  
+  /* Fix table containers */
+  .table-responsive {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  /* Fix search shell on tablet */
+  .search-shell.slim {
+    width: 100%;
+    min-width: 200px;
+  }
+  
+  /* Fix orders toolbar */
+  .orders-toolbar {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+  
+  .orders-toolbar-right {
+    justify-content: flex-start;
+    flex-wrap: wrap;
+  }
+  
+  /* Fix page section head */
+  .page-section-head {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  
+  .header-actions {
+    width: 100%;
+  }
+}
+
+/* Mobile - Small screens (max-width: 767px) */
+@media (max-width: 767px) {
+  .admin-content {
+    padding: 10px;
+  }
+  
+  /* Stats grid mobile */
+  .stats-grid,
+  .order-stats-grid {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+  
+  /* Dashboard stats cards */
+  .dashboard-stat-card {
+    min-height: auto;
+    padding: 14px;
+  }
+  
+  .dashboard-stat-value strong {
+    font-size: 20px;
+  }
+  
+  /* Chart responsive */
+  .chart-shell {
+    grid-template-columns: 1fr;
+    min-height: auto;
+  }
+  
+  .chart-axis {
+    display: none;
+  }
+  
+  .chart-stage {
+    padding: 0 0 20px 0;
+    border-left: none;
+  }
+  
+  .dashboard-chart-stage .revenue-chart {
+    height: 200px;
+  }
+  
+  /* Split metrics mobile */
+  .split-metrics {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+  
+  .split-metric + .split-metric {
+    border-left: none;
+    border-top: 1px solid var(--border);
+    padding-left: 0;
+    padding-top: 10px;
+  }
+  
+  /* Table fixes */
+  .admin-table thead th,
+  .order-table thead th {
+    padding: 10px 12px;
+    font-size: 11px;
+    white-space: nowrap;
+  }
+  
+  .admin-table tbody td,
+  .order-table tbody td {
+    padding: 10px 12px;
+    font-size: 12px;
+  }
+  
+  /* Action icons */
+  .action-icons {
+    gap: 4px;
+  }
+  
+  .table-action-icon {
+    width: 28px;
+    height: 28px;
+  }
+  
+  /* Pagination */
+  .pagination-wrap {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .page-numbers {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .page-numbers button {
+    width: 32px;
+    height: 32px;
+    font-size: 12px;
+  }
+  
+  .pager-button {
+    min-width: 100px;
+    height: 36px;
+    font-size: 12px;
+  }
+  
+  /* Modal on mobile */
+  .users-modal-backdrop {
+    padding: 10px;
+  }
+  
+  .users-modal-card {
+    width: calc(100% - 20px);
+    max-height: calc(100vh - 20px);
+    padding: 16px;
+  }
+  
+  .users-modal-head h3 {
+    font-size: 18px;
+  }
+  
+  .users-modal-field input,
+  .users-modal-field select,
+  .users-modal-field textarea {
+    padding: 10px 12px;
+    min-height: 44px;
+  }
+  
+  .form-row-modal {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+  
+  /* Topbar mobile */
+  .topbar {
+    padding: 10px 12px;
+    flex-wrap: wrap;
+  }
+  
+  .topbar-actions {
+    width: 100%;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  
+  .search-shell {
+    width: 100%;
+    order: 1;
+  }
+  
+  .search-shell.slim {
+    width: 100%;
+  }
+  
+  /* Profile menu */
+  .profile-menu {
+    order: 4;
+  }
+  
+  .theme-pill {
+    order: 3;
+  }
+  
+  .top-icon-button {
+    order: 2;
+  }
+}
+
+/* Small Mobile (max-width: 480px) */
+@media (max-width: 480px) {
+  .admin-content {
+    padding: 8px;
+  }
+  
+  .panel {
+    padding: 12px;
+  }
+  
+  .page-section-head h2 {
+    font-size: 18px;
+  }
+  
+  .muted-copy {
+    font-size: 11px;
+  }
+  
+  /* Button sizes */
+  .dark-action {
+    height: 36px;
+    padding: 0 12px;
+    font-size: 12px;
+  }
+  
+  .dark-action.lg-pill {
+    height: 40px;
+    padding: 0 14px;
+  }
+  
+  .outline-action {
+    height: 36px;
+    padding: 0 14px;
+    font-size: 12px;
+  }
+  
+  /* Stats cards */
+  .stat-card {
+    min-height: auto;
+  }
+  
+  .stat-value-wrap strong {
+    font-size: 22px;
+  }
+  
+  /* Table cells */
+  .admin-table tbody td,
+  .order-table tbody td {
+    padding: 8px 10px;
+    font-size: 11px;
+  }
+  
+  /* Dashboard specific */
+  .dashboard-perfect .dashboard-stat-card {
+    padding: 12px;
+  }
+  
+  .dashboard-panel-header h3 {
+    font-size: 14px;
+  }
+  
+  .dashboard-panel-header p {
+    font-size: 10px;
+  }
+  
+  .insight-number {
+    font-size: 28px;
+  }
+  
+  /* Buttons */
+  .btn-sm {
+    padding: 4px 8px;
+    font-size: 11px;
+  }
+  
+  /* Modal actions */
+  .users-modal-actions {
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  .users-modal-actions .outline-action,
+  .users-modal-submit,
+  .users-danger-button {
+    width: 100%;
+    min-width: auto;
+  }
+}
+
+/* ============================================
+   WEEKLY MENU PAGE RESPONSIVE FIXES
+   ============================================ */
+
+/* Weekly Menu Cards */
+@media (max-width: 767px) {
+  .weekly-menu-meal-cards {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+  
+  .meal-type-card {
+    padding: 10px 12px;
+  }
+  
+  .meal-type-icon {
+    width: 44px;
+    height: 44px;
+  }
+  
+  .meal-type-info h4 {
+    font-size: 14px;
+  }
+  
+  .meal-type-info span {
+    font-size: 10px;
+  }
+}
+
+/* Day Navigation */
+@media (max-width: 767px) {
+  .weekly-menu-days {
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    padding: 8px;
+    gap: 8px;
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  .day-button {
+    min-width: 70px;
+    padding: 8px 12px;
+    flex-shrink: 0;
+  }
+  
+  .day-button .day-name {
+    display: block;
+    font-size: 13px;
+  }
+  
+  .day-button .day-full {
+    display: none;
+  }
+}
+
+/* Menu Items Panel */
+@media (max-width: 767px) {
+  .weekly-menu-items-panel {
+    padding: 12px;
+  }
+  
+  .weekly-menu-items-panel .panel-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  
+  .menu-item-row {
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: 10px 12px;
+  }
+  
+  .menu-item-number {
+    width: 28px;
+    height: 28px;
+    font-size: 11px;
+  }
+  
+  .menu-item-name {
+    font-size: 13px;
+    flex: 1;
+    min-width: 120px;
+  }
+  
+  .menu-item-actions {
+    margin-left: auto;
+  }
+  
+  .icon-btn {
+    width: 28px;
+    height: 28px;
+  }
+}
+
+/* Overview Table */
+@media (max-width: 767px) {
+  .weekly-menu-overview {
+    padding: 12px;
+    overflow-x: auto;
+  }
+  
+  .overview-table-wrapper {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  .overview-menu-table {
+    min-width: 500px;
+  }
+  
+  .overview-menu-table th,
+  .overview-menu-table td {
+    padding: 8px 10px;
+    font-size: 11px;
+  }
+  
+  .meal-badge {
+    font-size: 10px;
+    padding: 2px 6px;
+  }
+  
+  .meal-items {
+        gap: 4px;
+  }
+}
+
+/* ============================================
+   ANNOUNCEMENTS PAGE RESPONSIVE FIXES
+   ============================================ */
+
+@media (max-width: 991px) {
+  .announcements-grid {
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 12px;
+  }
+}
+
+@media (max-width: 767px) {
+  .announcements-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  
+  .announcement-card {
+    margin: 0;
+  }
+  
+  .announcement-card-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  
+  .announcement-card-actions {
+    width: 100%;
+    justify-content: flex-end;
+  }
+  
+  .announcement-title {
+    font-size: 15px;
+  }
+  
+  .announcement-message {
+    font-size: 12px;
+  }
+  
+  .announcement-meta {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  
+  .meta-item {
+    font-size: 10px;
+  }
+}
+
+/* ============================================
+   MEAL PLANS PAGE RESPONSIVE FIXES
+   ============================================ */
+
+@media (max-width: 991px) {
+  .meal-plans-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+}
+
+@media (max-width: 767px) {
+  .meal-plans-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  
+  .plan-card {
+    padding: 12px;
+  }
+  
+  .plan-price strong {
+    font-size: 20px;
+  }
+}
+
+/* ============================================
+   STAFF MANAGEMENT PAGE RESPONSIVE FIXES
+   ============================================ */
+
+@media (max-width: 991px) {
+  .staff-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+}
+
+@media (max-width: 767px) {
+  .staff-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  
+  .staff-card {
+    padding: 12px;
+  }
+  
+  .password-field-group {
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  .password-field-group .outline-action {
+    width: 100%;
+  }
+  
+  .credentials-modal {
+    width: 95%;
+    margin: 10px;
+  }
+  
+  .credential-row {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  
+  .credential-row span:first-child {
+    width: 100%;
+  }
+  
+  .credential-row code {
+    width: calc(100% - 50px);
+    font-size: 10px;
+  }
+}
+
+/* ============================================
+   DASHBOARD PAGE RESPONSIVE FIXES
+   ============================================ */
+
+@media (max-width: 767px) {
+  .dashboard-perfect .dashboard-stat-card {
+    min-height: auto;
+  }
+  
+  .dashboard-stat-value {
+    margin-top: 10px;
+  }
+  
+  .dashboard-stat-value strong {
+    font-size: 20px;
+  }
+  
+  .split-metrics {
+    padding: 0 0 10px;
+  }
+  
+  .dashboard-perfect .split-metric strong {
+    font-size: 16px;
+  }
+  
+  .schedule-grid {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+  
+  .schedule-card {
+    padding: 10px;
+  }
+  
+  .menu-tag {
+    font-size: 10px;
+    padding: 2px 6px;
+  }
+  
+  .request-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  
+  .request-actions {
+    width: 100%;
+    display: flex;
+    gap: 8px;
+  }
+  
+  .request-actions button {
+    flex: 1;
+  }
+  
+  .staff-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+  
+  .chart-legend {
+        margin-top: 8px;
+    gap: 12px;
+  }
+  
+  .legend-dot {
+    width: 10px;
+    height: 10px;
+  }
+}
+
+/* ============================================
+   UTILITY CLASSES FOR RESPONSIVE
+   ============================================ */
+
+/* Hide on mobile */
+@media (max-width: 767px) {
+  .hide-mobile {
+    display: none !important;
+  }
+  
+  .text-center-mobile {
+    text-align: center !important;
+  }
+  
+  .w-100-mobile {
+    width: 100% !important;
+  }
+
+  .topbar {
+    min-height: 64px;
+    padding: 10px 12px;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    gap: 12px;
+  }
+
+  .topbar-start {
+    flex: 0 0 auto;
+  }
+
+  .page-title,
+  .search-shell {
+    display: none !important;
+  }
+
+  .topbar-actions {
+    width: auto;
+    margin-left: auto;
+    justify-content: flex-end;
+    flex-wrap: nowrap;
+    gap: 8px;
+  }
+
+  .top-icon-button,
+  .theme-pill,
+  .profile-menu {
+    flex-shrink: 0;
+  }
+}
+
+/* Hide on tablet */
+@media (min-width: 768px) and (max-width: 991px) {
+  .hide-tablet {
+    display: none !important;
+  }
+}
+
+/* Show on mobile only */
+@media (min-width: 768px) {
+  .show-mobile {
+    display: none !important;
+  }
+}
+
+/* Fix for overflowing content */
+.overflow-x-auto {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Fix for long words */
+.break-word {
+  word-break: break-word;
+  overflow-wrap: break-word;
+}
+

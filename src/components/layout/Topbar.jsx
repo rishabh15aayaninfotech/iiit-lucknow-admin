@@ -38,7 +38,7 @@ function Topbar({ onMenuClick, theme, onToggleTheme }) {
 
   return (
     <header className="topbar">
-      <div className="d-flex align-items-center gap-3">
+      <div className="topbar-start">
         <button type="button" className="menu-button d-lg-none" onClick={onMenuClick}>
           <FiMenu />
         </button>
