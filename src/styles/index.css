@@ -8452,6 +8452,7 @@ a {
   .footer-left,
   .footer-right {
     justify-content: center;
+    flex-wrap: nowrap;
   }
   
   .india-logo {
