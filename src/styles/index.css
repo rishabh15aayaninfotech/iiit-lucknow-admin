@@ -533,7 +533,9 @@ a {
   font-size: 15px;
   font-weight: 700;
 }
-
+.admin-shell.theme-dark .sidebar-user h6 {
+  color: var(--admin-text-strong);
+}
 .sidebar-user p {
   margin: 0;
   color: var(--admin-text-soft);

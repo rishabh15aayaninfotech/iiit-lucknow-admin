@@ -340,7 +340,7 @@ function MessStaffManagement() {
               {filteredStaff.map((member) => (
                 <tr key={member.id}>
                   <td>
-                    <span className="text-muted">{member.id}</span>
+                    <span className="muted-copy">{member.id}</span>
                   </td>
                   <td>
                     <div className="order-product-cell">
@@ -690,7 +690,7 @@ function MessStaffManagement() {
               </button>
               <button
                 type="button"
-                className="login-submit"
+                className="outline-action"
                 onClick={() => {
                   const allCredentials = `Username: ${generatedCredentials.username}\nPassword: ${generatedCredentials.password}\nURL: https://iiitl.ac.in/mess/admin`
                   copyToClipboard(allCredentials, 'All credentials')
