@@ -72,7 +72,7 @@ function AppRouter() {
         >
           <Route index element={<Navigate to="/dashboard" replace />} />
           <Route path="dashboard" element={<DashboardPage />} />
-          <Route path="orders" element={<OrderManagementPage />} />
+          {/* <Route path="orders" element={<OrderManagementPage />} />
           <Route path="vendors" element={<VendorManagementPage />} />
           <Route path="categories" element={<CategoryManagementPage />} />
           <Route path="users" element={<UserManagementPage />} />
@@ -83,7 +83,7 @@ function AppRouter() {
           <Route path="support-tickets" element={<SupportTicketPage />} />
           <Route path="reviews" element={<ReviewFeedbackPage />} />
           <Route path="loyalty-referral" element={<LoyaltyReferralPage />} />
-          <Route path="affiliate-program" element={<AffiliateProgramPage />} />
+          <Route path="affiliate-program" element={<AffiliateProgramPage />} /> */}
           <Route path="meal-plans" element={<MealPlanManagementPage />} />
           <Route path="special-requests" element={<SpecialRequestsPage />} />
           <Route path="announcements" element={<AnnouncementsPage />} />
