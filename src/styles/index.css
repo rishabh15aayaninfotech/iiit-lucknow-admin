@@ -6380,25 +6380,3 @@ a {
   border-color: var(--primary);
 }
 
-/* Ensure tables are scrollable on mobile */
-.table-responsive {
-  width: 100%;
-  overflow-x: auto;
-}
-
-/* Make sure table cells don't overflow */
-.order-table td, .order-table th,
-.admin-table td, .admin-table th {
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  overflow: hidden;
-}
-
-/* Responsive font and padding for table cells */
-@media (max-width: 767.98px) {
-  .order-table td, .order-table th,
-  .admin-table td, .admin-table th {
-    padding: 10px 8px;
-    font-size: 13px;
-  }
-}
